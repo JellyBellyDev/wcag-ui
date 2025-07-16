@@ -30,6 +30,9 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
+      - name: Build project
+        run: pnpm build:packages
+
       - name: Create and publish versions
         uses: changesets/action@v1
         with:
@@ -37,5 +40,5 @@ jobs:
           title: "chore: update versions"
           publish: pnpm ci:publish
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
